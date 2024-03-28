@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "NODE_ENV=local nodemon ./src/index.ts",
     "serve": "NODE_ENV=development pm2 start ./dist/index.js --name=ProductModule",
-    "build": "tsc"
+    "build": "tsc",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",

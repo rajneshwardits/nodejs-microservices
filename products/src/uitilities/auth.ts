@@ -16,7 +16,7 @@ const jwtSecret = config[key].secret.jwt
 
 async function checkAuthToken(req: any, res: any, next: any) {
   if (req.headers.authorization) {
-    const token = req.headers.authorization.replace('Bearer ',''); 
+    const token = req.headers.authorization.replace('Bearer ', '')
     await jwt.verify(token, jwtSecret, async function (err: any, decoded: any) {
       if (err) {
         if (err.message === 'jwt expired') {
