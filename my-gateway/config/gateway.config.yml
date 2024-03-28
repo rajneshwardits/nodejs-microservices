@@ -26,14 +26,10 @@ serviceEndpoints:
 
 # policies
 policies:
-  - basic-auth
   - cors
-  - expression
-  - key-auth
   - log
-  - oauth2
+  - jwt
   - proxy
-  - rate-limit
 
 # pipelines
 pipelines:
@@ -41,6 +37,13 @@ pipelines:
     apiEndpoints:
       - user
     policies:
+      - cors:
+          - action:
+              origin: '*'
+              methods: 'GET,PUT,PATCH,POST,DELETE'
+      - log:
+          - action: 
+              message: ${req.method} ${req.originalUrl}
       - proxy:
           - action:
               serviceEndpoint: userService
@@ -50,6 +53,17 @@ pipelines:
     apiEndpoints:
       - product
     policies:
+      - cors:
+          - action:
+              origin: '*'
+              methods: 'GET,PUT,PATCH,POST,DELETE'
+      - jwt:
+          - action:
+              secretOrPublicKey: 'nodeTypescript'
+              checkCredentialExistence: false
+      - log:
+          - action: 
+              message: ${req.method} ${req.originalUrl}
       - proxy:
           - action:
               serviceEndpoint: productService

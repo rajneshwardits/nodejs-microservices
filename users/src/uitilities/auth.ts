@@ -12,11 +12,12 @@ import { failAction } from '../uitilities/response'
 /* Environment */
 import { config } from '../config/default'
 const key: string = process.env.NODE_ENV || 'development'
-const jwtSecret = config.local.secret.jwt
+const jwtSecret = config[key].secret.jwt
 
 async function checkAuthToken(req: any, res: any, next: any) {
-  if (req.headers.authorization) {
-    await jwt.verify(req.headers.authorization, jwtSecret, async function (err: any, decoded: any) {
+  if (req.headers.authorization) { 
+    const token = req.headers.authorization.replace('Bearer ',''); 
+    await jwt.verify(token, jwtSecret, async function (err: any, decoded: any) {
       if (err) {
         if (err.message === 'jwt expired') {
           res.status(statusCode.tokenExpired).json(failAction(statusCode.tokenExpired, message.tokenExpired, message.tokenExpired))
@@ -27,7 +28,7 @@ async function checkAuthToken(req: any, res: any, next: any) {
         const authentication = await db.authentications.findOne({
           where: {
             userId: decoded.userId,
-            authToken: req.headers.authorization,
+            authToken: token,
           },
         })
         if (authentication) {

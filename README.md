@@ -5,20 +5,20 @@
 - Clone this repository:
 - An IDE or text editor like VS Code
 - Node version installed above 14.17.0
-- Run the following commands for run the full project
-    - Make the bash script executable: chmod +x nodeServe.sh 
-    - Run the bash script: ./nodeServe.sh
+- Run the following commands to start the full project
+    - Make the bash script executable: ``` chmod +x nodeServe.sh ``` 
+    - Run the bash script: ``` ./nodeServe.sh ```
 - Import the NodeJS-Microservices.postman_collection.json file in postman
-- Microservices API's ready for the testing
+- Microservices APIs ready for the testing
 
 ## Project Run Commands
 
-- Make the bash script executable: chmod +x nodeServe.sh 
-- Run the bash script: ./nodeServe.sh
+- Make the bash script executable: ``` chmod +x nodeServe.sh ``` 
+- Run the bash script: ``` ./nodeServe.sh ```
 
 ## Key Topics
 
-The following topics covered in this unit:
+The following topics were covered in this unit:
 
 - User CRUD module with SignUp and Login
 - Product CRUD module
