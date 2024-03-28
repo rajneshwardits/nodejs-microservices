@@ -12,7 +12,7 @@ const PORT = config[key].port || 8005
 app.use(urlencoded({ extended: true }))
 app.use(json())
 app.use(helmet())
- 
+
 /* Routes */
 app.use('/v1/user', usersRouter)
 

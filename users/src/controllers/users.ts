@@ -19,10 +19,10 @@ class userController {
     try {
       const data = await UserServices.userAdd(req.body)
 
-      if(data == "userAlreadyExist"){
+      if (data == 'userAlreadyExist') {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.alreadyExist('User')))
-      }else{
-      res.status(statusCode.success).json(successAction(statusCode.success, data, message.add('User')))
+      } else {
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.add('User')))
       }
     } catch (err: any) {
       logger.error(message.errorLog('userAdd', 'userController', err))
